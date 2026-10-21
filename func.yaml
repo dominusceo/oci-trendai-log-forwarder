@@ -1,0 +1,12 @@
+schema_version: 20180708
+name: oci-trendai-log-forwarder
+version: 0.0.1
+runtime: python
+build_image: fnproject/python:3.11-dev
+run_image: fnproject/python:3.11
+entrypoint: /python/bin/fdk /function/func.py handler
+memory: 512
+timeout: 60
+config:
+  TREND_HEC_URL: https://<trend-api-fqdn>/ingest/api/v1/third_party_log/hec
+  TREND_JWT_SECRET_OCID: ocid1.vaultsecret.oc1.<region>.<unique-id>
